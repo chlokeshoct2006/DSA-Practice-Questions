@@ -10,6 +10,9 @@ class countDigit {
     }
     public static int countDigits(int n) {
         int c=0;
+        if(n==0){
+            return 1;
+        }
         n=Math.abs(n);
         while (n>0){
             c++;
