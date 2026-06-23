@@ -1,14 +1,22 @@
-// Last updated: 6/23/2026, 1:24:56 PM
+// Last updated: 6/23/2026, 1:25:57 PM
 1class Solution {
-2    public int singleNonDuplicate(int[] nums) {
-3        if(nums.length==1){
-4            return nums[0];
-5        }
-6        for(int i=0; i<nums.length-1; i+=2){
-7            if(nums[i]!=nums[i+1]){
-8                return nums[i];   
-9            }
-10        }
-11        return nums[nums.length-1];
-12    }
-13}
+2    public int trap(int[] height) {
+3        int n = height.length;
+4        int leftMax[] = new int[n];
+5        leftMax[0] = height[0];
+6        for(int i=1; i<n; i++){
+7            leftMax[i] = Math.max(height[i], leftMax[i-1]);
+8        }
+9        int rightMax[] = new int[n];
+10        rightMax[n-1] = height[n-1];
+11        for(int i=n-2; i>=0; i--){
+12            rightMax[i] = Math.max(height[i], rightMax[i+1]);
+13        }
+14        int trappedWater = 0;
+15        for(int i=0; i<n; i++){
+16            int waterLevel = Math.min(leftMax[i], rightMax[i]);
+17            trappedWater += waterLevel - height[i];
+18        }
+19        return trappedWater;
+20    }
+21}
