@@ -1,15 +1,14 @@
-// Last updated: 6/23/2026, 1:22:54 PM
+// Last updated: 6/23/2026, 1:24:56 PM
 1class Solution {
-2    public int findPeakElement(int[] nums) {
-3        int l = 0, r = nums.length - 1;
-4        while (l < r) {
-5            int mid = (l + r) / 2;
-6            if (nums[mid] > nums[mid + 1]) {
-7                r = mid;
-8            } else {
-9                l = mid + 1;
-10            }
-11        }
-12        return l;
-13    }
-14}
+2    public int singleNonDuplicate(int[] nums) {
+3        if(nums.length==1){
+4            return nums[0];
+5        }
+6        for(int i=0; i<nums.length-1; i+=2){
+7            if(nums[i]!=nums[i+1]){
+8                return nums[i];   
+9            }
+10        }
+11        return nums[nums.length-1];
+12    }
+13}
