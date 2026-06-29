@@ -1,17 +1,17 @@
-// Last updated: 6/29/2026, 1:05:32 PM
+// Last updated: 6/29/2026, 1:30:39 PM
 1class Solution {
-2    public List<Integer> getRow(int rowIndex) {
-3        List<Integer> row = new ArrayList<>();
-4        row.add(1);
-5
-6        for (int i = 1; i <= rowIndex; i++) {
-7            row.add(1);
-8
-9            for (int j = i - 1; j > 0; j--) {
-10                row.set(j, row.get(j) + row.get(j - 1));
-11            }
-12        }
-13
-14        return row;
+2    public int maxProfit(int[] prices) {
+3        int buyPrice = Integer.MAX_VALUE;
+4        int maxProfit = 0;
+5        for(int i=0; i<prices.length;i++){
+6            if(buyPrice<prices[i]){
+7                int profit = prices[i] - buyPrice;
+8                maxProfit = Math.max(maxProfit,profit);
+9            }
+10            else{
+11                buyPrice = prices[i];
+12            }
+13        }
+14        return maxProfit;
 15    }
 16}
