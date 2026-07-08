@@ -1,17 +1,16 @@
-// Last updated: 7/8/2026, 10:04:06 PM
-1class Solution {
-2    public String[] sortPeople(String[] names, int[] heights) {
-3        Map<Integer, String> map = new HashMap<>();
-4        for (int i = 0; i < names.length; i++) {
-5            map.put(heights[i], names[i]);
-6        }        
-7        Arrays.sort(heights);
-8        String[] result = new String[heights.length];
-9        int index = 0;
-10        for (int i = heights.length - 1; i >= 0; i--) {
-11            result[index] = map.get(heights[i]);
-12            index++;
-13        }
-14        return result;
-15    }
-16}
+// Last updated: 7/8/2026, 10:08:52 PM
+1
+2class Solution {
+3    public List<Integer> findDuplicates(int[] nums) {
+4        List<Integer> ans = new ArrayList<>();
+5        int n = nums.length;
+6        for (int i = 0; i < n; i++) {
+7            int x = Math.abs(nums[i]);
+8            if (nums[x - 1] < 0) {
+9                ans.add(x);
+10            }
+11            nums[x - 1] *= -1;
+12        }
+13        return ans;
+14    }
+15}
