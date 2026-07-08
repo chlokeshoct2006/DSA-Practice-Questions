@@ -1,16 +1,30 @@
-// Last updated: 7/8/2026, 10:08:52 PM
-1
-2class Solution {
-3    public List<Integer> findDuplicates(int[] nums) {
-4        List<Integer> ans = new ArrayList<>();
-5        int n = nums.length;
-6        for (int i = 0; i < n; i++) {
-7            int x = Math.abs(nums[i]);
-8            if (nums[x - 1] < 0) {
-9                ans.add(x);
-10            }
-11            nums[x - 1] *= -1;
-12        }
-13        return ans;
-14    }
-15}
+// Last updated: 7/8/2026, 10:09:46 PM
+1class Solution {
+2    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+3        int length = 0;
+4        for(int i=0;i<arr1.length;i++){
+5            length = Math.max(length,arr1[i]);
+6        }
+7        int[] count = new int[length+1];
+8        for(int i=0;i<arr1.length;i++){
+9            count[arr1[i]]++;
+10        }
+11        int[] ans = new int[arr1.length];
+12        int index=0;
+13        for(int i=0;i<arr2.length;i++){
+14            while(count[arr2[i]]>0){
+15                ans[index] = arr2[i];
+16                index++;
+17                count[arr2[i]]--;
+18            }
+19        }
+20        for(int i=0;i<count.length;i++){
+21            while(count[i]>0){
+22                ans[index] = i;
+23                index++;
+24                count[i]--;
+25            }
+26        }
+27        return ans;
+28    }
+29}
